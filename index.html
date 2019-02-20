@@ -37,5 +37,48 @@
       <button class="r5 c2" data-sym="."></button>
     </div>
 
+    <script src="./calculator.js"></script>
+    <script>
+      window.onload = function() {
+        let engine = new Calculator(function(state) {
+          console.log(state);
+          let el = document.querySelector('#displaytext')
+          if ( el ) {
+            el.innerHTML = state.displayText;
+          }
+        });
+        let DATA = {
+          'mc': { text: 'Mc', fn: () => { engine.clear(); } },
+          'm+': { text: 'M+', fn: notImplemented },
+          '+':  { text: '+', fn: () => { engine.setOperation('+'); }},
+          '-':  { text: '-', fn: notImplemented },
+          '/':  { text: '&divide;' , fn: notImplemented},
+          '*':  { text: '&times;' , fn: notImplemented},
+          '.':  { text: '.', fn: notImplemented },
+          '0':  { text: '0', fn: () => { engine.appendDigit('0'); } },
+          '1':  { text: '1', fn: () => { engine.appendDigit('1'); } },
+          '2':  { text: '2', fn: () => { engine.appendDigit('2'); } },
+          '3':  { text: '3', fn: notImplemented },
+          '4':  { text: '4', fn: notImplemented },
+          '5':  { text: '5', fn: notImplemented },
+          '6':  { text: '6', fn: notImplemented },
+          '7':  { text: '7', fn: notImplemented },
+          '8':  { text: '8', fn: notImplemented },
+          '9':  { text: '9', fn: notImplemented },
+          '=':  { text: '=', fn: () => { engine.execute(); } },
+        }
+        document.querySelectorAll('[data-sym]').forEach(function(element, index, arr) {
+          let sym = element.getAttribute('data-sym');
+          let data = DATA[sym];
+          if ( !data ) {
+            console.error('could not load symbol', sym);
+            return;
+          }
+          element.innerHTML = data.text;
+          element.onclick = data.fn.bind(data);
+        });
+      }
+    </script>
+
   </body>
 </html>

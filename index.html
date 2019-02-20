@@ -39,9 +39,18 @@
 
     <script src="./calculator.js"></script>
     <script>
+      console.log2 = (function() {
+        let args = ['debug']
+        for(let i=0; i<arguments.length; i++) {
+          args.push(arguments[i]);
+        }
+        console.log.apply(console, args);
+      });
+
+
       window.onload = function() {
         let engine = new Calculator(function(state) {
-          console.log(state);
+          console.log2(state);
           let el = document.querySelector('#displaytext')
           if ( el ) {
             el.innerHTML = state.displayText;

@@ -84,12 +84,14 @@ table{
 
 #buttonbox {
   margin: auto;
-  width: 50%;
-  margin-top: 5em;
+  width: 12em;;
   display: grid;
-  grid-template-columns: repeat(4, 2em);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(1em, auto);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: .8em;
+  margin-top: 1.2em;
+  /* justify-items: center; */
+  justify-content: space-evenly;
+
 }
 
 .c1 { grid-column: 1; }

@@ -72,6 +72,15 @@ table{
 \*------------------------------------*/
 /* GO! */
 
+#displaytext {
+  background-color: 111;
+  border: 1px solid #999;
+  margin: auto;
+  width: 11em;;
+  text-align: right;
+  padding: 0 0.5em 0 0.5em;
+  min-height: 1em;
+}
 
 #buttonbox {
   margin: auto;
